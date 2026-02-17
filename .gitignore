@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+.env
+.venv/
+venv/
+
+# runtime outputs
+results_enstrophy_budget/
+results_*/
