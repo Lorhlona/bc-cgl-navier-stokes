@@ -1,6 +1,11 @@
-# BC-CGL Navier-Stokes Project (GitHub Ready)
+# BC-CGL Navier-Stokes Regularity Programme
 
-This folder is prepared for direct upload to GitHub, including:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19115345.svg)](https://doi.org/10.5281/zenodo.19115345)
+
+**From $\jmath^2=+1$ to 3D Navier–Stokes Global Regularity**
+*via Bicomplex Calderon–Zygmund–Ginzburg–Landau Theory*
+
+This repository contains:
 - source code
 - paper draft
 - experiment result files
