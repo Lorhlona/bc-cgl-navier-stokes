@@ -758,64 +758,149 @@ DNS confirms: the $\sech^2\theta$-weighted cancellation ratio is
 $|\gamma_s|/\gamma_a\approx 2.5\%$, versus $\varepsilon_{\mathrm{CZ}}\approx 55\%$
 unweighted (a $22\times$ improvement from the Fisher weight).
 
-\subsection{Remaining Analytical Task}
+\subsection{Bernstein Normal Form: the $\sinh\theta$ Transformation}
+
+The $\theta$-equation~\eqref{eq:theta_evolution} contains a gradient
+nonlinearity $\nu|\nabla\theta|^2\tanh\theta$ that obstructs standard
+parabolic regularity theory. The following change of variable eliminates it.
+
+\begin{theorem}[Bernstein normal form]\label{thm:bernstein}
+Define $w:=\sinh\theta$. Then $w$ satisfies the \textbf{semilinear}
+parabolic equation
+\begin{equation}\label{eq:w_eq}
+\boxed{\partial_t w + (v\cdot\nabla)w = \nu\Delta w
+  + A\sqrt{1+w^2} - 2\Gamma\,w,}
+\end{equation}
+where $A=S_{++}-S_{--}$ and $\Gamma=|S_{+-}|$ are the drive and
+restoration from the $\theta$-equation. There is \textbf{no gradient
+nonlinearity}.
+\end{theorem}
+
+\begin{proof}
+$\partial_t(\sinh\theta)=\cosh\theta\cdot\partial_t\theta$ and
+$\Delta(\sinh\theta)=\cosh\theta\,\Delta\theta+\sinh\theta\,|\nabla\theta|^2$.
+Hence
+\begin{align*}
+\partial_t(\sinh\theta)
+&=\cosh\theta\bigl[A-2\Gamma\tanh\theta+\nu\Delta\theta
+  +\nu|\nabla\theta|^2\tanh\theta\bigr]\\
+&=A\cosh\theta-2\Gamma\sinh\theta
+  +\nu\bigl[\cosh\theta\,\Delta\theta+\sinh\theta\,|\nabla\theta|^2\bigr]\\
+&=A\sqrt{1+w^2}-2\Gamma\,w+\nu\Delta(\sinh\theta).\qquad\square
+\end{align*}
+\end{proof}
+
+\begin{remark}
+The $w$-equation~\eqref{eq:w_eq} is a \emph{standard semilinear
+advection--reaction--diffusion equation} with at most linear growth
+in $w$ for large $|w|$ (since $\sqrt{1+w^2}\sim|w|$).
+The source $f(w)=A\sqrt{1+w^2}-2\Gamma w$ has the equilibrium
+\begin{equation}
+w_{\mathrm{eq}}=\frac{|A|}{\sqrt{4\Gamma^2-A^2}},\qquad
+\theta_{\mathrm{eq}}=\artanh\!\left(\frac{|A|}{2\Gamma}\right),
+\end{equation}
+which exists if and only if $|A|<2\Gamma$, i.e.\ $\tan\alpha<1$.
+\end{remark}
+
+\subsection{The Remaining Gap: Precise Formulation}
+
+The $w$-equation maximum principle at $x_*$ (where $w$ is maximal) gives
+\begin{equation}
+\frac{d}{dt}w_{\max}\le A(x_*)\sqrt{1+w_{\max}^2}-2\Gamma(x_*)\,w_{\max}.
+\end{equation}
+For large $w_{\max}$, the right-hand side behaves as
+$(A(x_*)-2\Gamma(x_*))\,w_{\max}$.
+Boundedness of $w$ (hence of $\theta$) therefore reduces to a single
+pointwise condition at the $\theta$-maximum:
 
 \begin{center}
-\fbox{\parbox{0.9\textwidth}{
-\textbf{Conjecture (Fisher--De Giorgi--Nash--Moser bridge).}
-For the $\theta$-equation~\eqref{eq:theta_evolution} with $\nu>0$
-on $\T^3$: if the Fisher enstrophy ratio satisfies
-$r(t)\ge r_*/2>0$ on $[0,T]$, then the parabolic De Giorgi--Nash--Moser
-theory applied to the $\theta$-equation with $\sech^2\theta$-weighted
-source estimates yields
-$\|\theta(\cdot,t)\|_{L^\infty}\le M(r_*,\nu,\|\omega_0\|_{H^s})$,
-which in turn implies $r(t)\ge\sech^2 M\ge r_*$ via bootstrap,
-closing LC1.
+\fbox{\parbox{0.92\textwidth}{
+\textbf{Open problem (NS geometric constraint).}\;
+At any point $x_*(t)$ where $|\theta(\cdot,t)|$ attains its spatial maximum,
+does the Biot--Savart self-consistency enforce
+\begin{equation}\label{eq:tanalpha}
+\tan\alpha(x_*,t)=\frac{|S_{++}(x_*)-S_{--}(x_*)|}{2|S_{+-}(x_*)|}<1\;\;?
+\end{equation}
 }}
 \end{center}
 
-The conjecture reduces LC1--LC2 to a \emph{single} problem in weighted
-parabolic regularity theory: promoting the $\sech^2\theta$-weighted
-$L^2$ bound (where the $\ell=2$ CZ cancellation is effective) to an
-$L^\infty$ bound on $\theta$ via De Giorgi--Nash--Moser iteration.
-This is a problem in harmonic analysis and parabolic PDE, decoupled
-from the NS dynamics.
+\medskip\noindent
+\textbf{What the $\ell=2$ structure gives.}\;
+The isotropic partition (Corollary~\ref{cor:iso}) yields
+$\langle\tan^2\alpha\rangle_{\mathrm{iso}}=3/2$, i.e.\
+$\tan\alpha_{\mathrm{iso}}=\sqrt{3/2}\approx 1.225>1$.
+\textbf{The $\ell=2$ structure alone does not close~\eqref{eq:tanalpha}.}
+
+\medskip\noindent
+\textbf{What DNS gives.}\;
+At $Re=2000$--$10{,}000$:
+$\alpha_{\mathrm{rms}}\approx 35^\circ$, giving
+$\tan\alpha_{\mathrm{eff}}\approx 0.700<1$.
+The cross-helicity accounts for $\approx 67\%$ of $|S_{\mathrm{off}}|^2$
+in the Fisher-weighted norm, far exceeding the isotropic $40\%$.
+
+\medskip\noindent
+\textbf{Origin of the discrepancy ($1.225\to 0.700$).}\;
+The strain $S_{ij}$ at $x_*$ is not a free $\ell=2$ tensor:
+it is \emph{self-consistently generated} from $\omega$ via Biot--Savart.
+Three mechanisms plausibly contribute:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Biot--Savart nonlocal self-consistency}:
+  the CZ convolution over $\T^3$ imposes correlations between
+  $S_{\pm\pm}$ and $S_{+-}$ that break the free-field partition.
+\item \emph{Extremal conditioning}:
+  the constraint $\nabla\theta(x_*)=0$, $\nabla^2\theta(x_*)\le 0$
+  selects a special subset of flow configurations at the maximum,
+  biasing the $\ell=2$ partition.
+\item \emph{Depletion of nonlinearity}:
+  the well-documented tendency of NS solutions toward
+  strain--vorticity alignment~\cite{Wal92} may manifest, in helical
+  coordinates, as cross-helicity enhancement.
+\end{enumerate}
+A rigorous proof of~\eqref{eq:tanalpha} from (i)--(iii) or related
+mechanisms would close the regularity argument.
 
 \subsection{Updated Status}
 
 \begin{center}
-\begin{tabular}{lcp{6.5cm}}
+\begin{tabular}{lcp{6cm}}
 \toprule
 \textbf{Step} & \textbf{Status} & \textbf{Note} \\
 \midrule
-$\ell=2$ Pythagorean identity & \textbf{Proved} & Lemma~\ref{lem:ell2}:
-  $|S_{++}-S_{--}|^2+4|S_{+-}|^2=|S_{\mathrm{off}}|^2$ \\
-Isotropic energy partition & \textbf{Proved} & Corollary~\ref{cor:iso}:
-  $3:2$ same-to-cross ratio \\
+$\ell=2$ Pythagorean identity & \textbf{Proved} & Lemma~\ref{lem:ell2} \\
+Isotropic partition & \textbf{Proved} & Cor.~\ref{cor:iso}: $3:2$ ratio \\
 Pointwise $\tan\alpha<1$ & \textbf{Obstructed} &
-  Remark~\ref{rmk:obstruction}: $\ell=2$ ratio $40\%<50\%$ \\
-Fisher-weighted CZ bound & \textbf{Proved} &
-  Proposition~\ref{prop:fisher_cz}: $\sech^2\theta$-weighted Hyt\"onen \\
-$r(t)\ge r_*$ (LC1) & \textbf{Conditional} &
-  Requires Fisher--DGNM bridge (Conjecture above) \\
-Helical CZ comparison (LC2) & \textbf{Conditional} &
-  Follows from LC1 $+$ $\ell=2$ structure \\
+  $\ell=2$ alone gives $1.225>1$ \\
+$\sinh\theta$ normal form & \textbf{Proved} &
+  Thm.~\ref{thm:bernstein}: no gradient term \\
+Fisher-weighted CZ & \textbf{Proved} &
+  Prop.~\ref{prop:fisher_cz} \\
+\midrule
+$\tan\alpha(x_*)<1$ & \textbf{Open} &
+  \eqref{eq:tanalpha}: NS geometric constraint \\
+\midrule
+$\theta$ bounded (LC1) & Follows & from $\tan\alpha<1$ \\
+CZ comparison (LC2) & Follows & from LC1 $+$ $\ell=2$ \\
 Phase regularity (LC3) & Standard & Parabolic Schauder \\
 CF93 bridge (LC4) & Standard & Direct from LC3 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\begin{remark}[Comparison with the pre-v87 status]
-Before the $\ell=2$ analysis, the proof had four independent
-analytical gaps (LC1--LC4 in Section~\ref{sec:discussion}).
-The v87-inspired structural analysis reduces these to a
-\emph{single} gap: the Fisher--DGNM bridge.
-The gap is now a precisely identified problem in weighted parabolic
-regularity, decoupled from the NS-specific difficulties.
-DNS at $Re$ up to $10{,}000$ provides strong quantitative evidence
-($\alpha_{\mathrm{rms}}\approx 35^\circ$, $r\approx 0.54$,
-$\varepsilon\sim Re^{-0.6}$) that the conjecture holds.
+\begin{remark}[Summary of progress]
+The original conditional proof had four independent analytical gaps
+(LC1--LC4). The v87-inspired analysis, capped by the $\sinh\theta$
+Bernstein normal form, reduces these to a \textbf{single open problem}:
+the NS geometric constraint~\eqref{eq:tanalpha}.
+This is no longer a question of weighted parabolic regularity or
+functional analysis; it is a question of \textbf{Biot--Savart
+self-consistent geometry}---whether the NS nonlinearity constrains the
+strain angle at helicity-imbalance extrema.
+DNS at $Re$ up to $10{,}000$ provides strong evidence
+($\tan\alpha_{\mathrm{eff}}\approx 0.700<1$, with the gap from the
+isotropic bound $1.225$ explained by self-consistency effects).
+The question is sharply posed and decoupled from the rest of the
+proof architecture.
 \end{remark}
 
 % =====================================================================
