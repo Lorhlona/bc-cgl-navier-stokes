@@ -602,10 +602,12 @@ The bounds in (LC3) imply the Constantin--Fefferman geometric hypothesis on vort
 \toprule
 \textbf{Step} & \textbf{Status} & \textbf{Note} \\
 \midrule
-$r(t) \geq r_* > 0$ & \textbf{Closed} & Section~\ref{sec:closure}, Theorem~\ref{thm:theta_uncon} \\
-Helical symbol splitting ($\ell=2$) & \textbf{Closed} & Lemma~\ref{lem:ell2} \\
-Pointwise helical CZ comparison (LC2) & \textbf{Closed} & Theorem~\ref{thm:LC2} \\
-$\theta$ bounded $\Rightarrow$ $\phi$ regular & Standard & Parabolic Schauder with $|\omega_\pm| \geq c_M|\omega|$ \\
+$\ell=2$ Pythagorean identity & \textbf{Proved} & Section~\ref{sec:closure}, Lemma~\ref{lem:ell2} \\
+Pointwise $\tan\alpha<1$ & \textbf{Obstructed} & $\ell=2$ ratio $40\%<50\%$; Remark~\ref{rmk:obstruction} \\
+Fisher-weighted CZ bound & \textbf{Proved} & Proposition~\ref{prop:fisher_cz} \\
+$r(t) \geq r_* > 0$ (LC1) & Conditional & Requires Fisher--DGNM bridge \\
+CZ comparison (LC2) & Conditional & Follows from LC1 $+$ $\ell=2$ \\
+$\theta$ bounded $\Rightarrow$ $\phi$ regular & Standard & Parabolic Schauder \\
 CF93 application & Standard & Direct from Step~4 \\
 BKM criterion & Classical & Textbook \\
 \bottomrule
@@ -697,182 +699,87 @@ Hence $\langle\sin^2\alpha\rangle=3/5$, giving
 $\alpha_{\mathrm{rms}}=\arcsin\sqrt{3/5}\approx 50.8^\circ < \arctan 2\approx 63.4^\circ$.
 \end{corollary}
 
-\subsection{Self-Consistent Strain Bound at $\theta$-Extrema}
+\subsection{Strain Geometry at $\theta$-Extrema: Obstruction and Resolution}
 
-\begin{theorem}[Near-Beltrami strain domination]\label{thm:beltrami_dom}
-Let $\omega$ be a smooth divergence-free field on $\T^3$.
-At any point $x_*$ where $|\theta(x_*)|$ is a spatial maximum with
-$|\theta(x_*)|>\theta_0>0$, define
-$\varepsilon_\pm=|\omega_\mp(x_*)|/|\omega_\pm(x_*)|<1$
-(the minority-to-majority helicity ratio). Then:
-\begin{enumerate}[label=(\roman*)]
-\item The drive and restoration have the asymptotic structure
-\begin{align}
-|S_{++}-S_{--}|(x_*) &= \varepsilon_\pm\,\Phi_A(x_*) + O(\varepsilon_\pm^2),\label{eq:drive_asymp}\\
-|S_{+-}|(x_*) &= \varepsilon_\pm\,\Phi_\Gamma(x_*) + O(\varepsilon_\pm^2),\label{eq:rest_asymp}
-\end{align}
-where $\Phi_A,\Phi_\Gamma$ depend on the majority-helicity field $\omega_\pm$
-via Biot--Savart.
-\item The ratio $\Phi_A/\Phi_\Gamma$ is bounded by the $\ell=2$ Pythagorean
-constraint:
-\begin{equation}\label{eq:ratio_bound}
-\frac{\Phi_A^2}{4\Phi_\Gamma^2}\le\frac{3}{2},
-\end{equation}
-i.e.\ $\Phi_A/(2\Phi_\Gamma)\le\sqrt{3/2}\approx 1.225$.
-\item The $\theta$-maximum principle gives, for $|\theta(x_*)|$ large:
-\begin{equation}
-\frac{d}{dt}|\theta_{\max}| \le |\omega(x_*)|\varepsilon_\pm
-\bigl[\Phi_A - 2\Phi_\Gamma\tanh|\theta_{\max}|\bigr]+O(\varepsilon_\pm^2).
-\end{equation}
-Since $\tanh|\theta_{\max}|\to 1$ as $|\theta_{\max}|\to\infty$,
-the bracket becomes $\Phi_A-2\Phi_\Gamma<0$ whenever
-$\Phi_A/(2\Phi_\Gamma)<1$.
-\end{enumerate}
-\end{theorem}
+\begin{remark}[Pointwise obstruction]\label{rmk:obstruction}
+The $\theta$-maximum principle (Theorem~\ref{thm:theta_bound}) requires
+$\tan\alpha(x_*)<1$ at the maximum point, i.e.,
+$|S_{++}-S_{--}|<2|S_{+-}|$ pointwise.
+However, the $\ell=2$ isotropic partition (Corollary~\ref{cor:iso}) gives
+$\langle 4|S_{+-}|^2\rangle=\frac{2}{5}|S_{\mathrm{off}}|^2<\frac{1}{2}|S_{\mathrm{off}}|^2$,
+so the cross-helicity accounts for only $40\%$ of the off-diagonal energy
+--- below the $50\%$ threshold needed for $\tan\alpha<1$.
+\textbf{The $\ell=2$ structure alone does not close the pointwise bound.}
 
-\begin{proof}
-\textbf{Part (i).}
-Write $\omega=\omega_\pm+\varepsilon_\pm|\omega_\pm|\tilde{\omega}_\mp$
-where $|\tilde{\omega}_\mp|=O(1)$.
-The velocity via Biot--Savart is
-$v=v_\pm+\varepsilon_\pm\tilde{v}_\mp+O(\varepsilon_\pm^2)$
-and the strain $S=S[\omega_\pm]+\varepsilon_\pm\tilde{S}+O(\varepsilon_\pm^2)$.
-The cross-helicity strain $S_{+-}=\hat{\omega}_+^i S_{ij}\hat{\omega}_-^j$
-vanishes at $O(1)$ for a pure Beltrami field (since $\hat{\omega}_-$
-is orthogonal to the dominant sector in the strain metric),
-and the leading contribution is $O(\varepsilon_\pm)$.
-Similarly, $S_{++}-S_{--}$ vanishes at $O(1)$ because in a pure
-single-helicity flow the strain is isotropic in the transverse plane,
-giving $S_{++}=S_{--}$. The leading anisotropy is $O(\varepsilon_\pm)$.
-
-\medskip\noindent
-\textbf{Part (ii).}
-At leading order in $\varepsilon_\pm$,
-$\Phi_A$ and $\Phi_\Gamma$ are matrix elements of
-$\tilde{S}_{ij}=S_{ij}[\varepsilon_\pm\tilde{\omega}_\mp]$
-in the helical basis determined by $\omega_\pm$.
-The Pythagorean identity \eqref{eq:pythag} applied to $\tilde{S}$ gives
-$\Phi_A^2+4\Phi_\Gamma^2=|\tilde{S}_{\mathrm{off}}|^2$.
-Since $\Phi_A^2\le|\tilde{S}_{\mathrm{off}}|^2-4\Phi_\Gamma^2$
-and $\Phi_A^2/(4\Phi_\Gamma^2)\le(|\tilde{S}_{\mathrm{off}}|^2-4\Phi_\Gamma^2)/(4\Phi_\Gamma^2)$,
-the isotropic bound from Corollary~\ref{cor:iso}
-gives $\Phi_A^2/(4\Phi_\Gamma^2)\le 3/2$ in the isotropic-average sense.
-
-To promote this to a pointwise bound: the perturbation $\tilde{\omega}_\mp$
-that enters via Biot--Savart is convolved against the CZ kernel over
-the entire domain $\T^3$. At the $\theta$-maximum, $\nabla\theta=0$,
-so the minority helicity $\omega_\mp$ is locally smooth and its Fourier
-support is spread over all directions. The CZ convolution averages over
-the $\ell=2$ angular structure, and the deviation from the isotropic partition
-is bounded by the anisotropy of $\omega_\mp$ in Fourier space.
-For any $L^2$ field on $\T^3$, the Fourier anisotropy is bounded:
-$\sup_{\hat{n}}|\langle|\hat{\omega}_\mp(k)|^2,Y_2^m(\hat{k})\rangle|
-\le\|\omega_\mp\|_{L^2}^2$,
-and the ratio $\Phi_A^2/(4\Phi_\Gamma^2)$ deviates from $3/2$ by at most
-$O(\|\omega_\mp\|_{L^2}/\|\omega_\mp\|_{\dot{H}^1})$ which vanishes as
-$Re\to\infty$ (the inertial range extends and isotropy improves).
-At finite $Re$, the bound $\Phi_A/(2\Phi_\Gamma)\le\sqrt{3/2}+\delta(Re)$
-holds with $\delta(Re)\to 0$.
-
-\medskip\noindent
-\textbf{Part (iii).}
-At the $\theta$-maximum, $\nabla\theta=0$ and $\nabla^2\theta\le 0$,
-so the viscous terms satisfy $R\le 0$.
-From the $\theta$-equation \eqref{eq:theta_evolution}:
-\[
-\frac{d}{dt}\theta_{\max}
-\le|S_{++}-S_{--}|(x_*)-2|S_{+-}|(x_*)\tanh\theta_{\max}.
-\]
-Substituting the asymptotics \eqref{eq:drive_asymp}--\eqref{eq:rest_asymp}:
-\[
-\frac{d}{dt}\theta_{\max}
-\le\varepsilon_\pm|\omega|\bigl[\Phi_A-2\Phi_\Gamma\tanh\theta_{\max}\bigr]
-+O(\varepsilon_\pm^2|\omega|).
-\]
-For $\tanh\theta_{\max}>\Phi_A/(2\Phi_\Gamma)$,
-the bracket is negative.
-By part~(ii), $\Phi_A/(2\Phi_\Gamma)\le\sqrt{3/2}\approx 1.225$.
-Since $\tanh\theta\to 1$ monotonically, and $\sqrt{3/2}>1$,
-we need $\tanh\theta_{\max}>\sqrt{3/2}$, which is impossible
-(since $\tanh<1$).
-
-However, the $O(\varepsilon_\pm^2)$ correction resolves this:
-at the $\theta$-maximum, $\varepsilon_\pm=e^{-2|\theta_{\max}|}/(1+e^{-2|\theta_{\max}|})
-\to 0$ exponentially. The leading $O(\varepsilon_\pm)$ terms cancel
-(both drive and restoration are $O(\varepsilon_\pm)$) and the sign of the
-remainder is determined by the $O(\varepsilon_\pm^2)$ terms plus viscosity.
-The viscous contribution $R\le 0$ provides a strictly negative floor at
-$O(\nu)$, independent of $\varepsilon_\pm$. Specifically,
-\[
-\nabla^2\theta(x_*)\le -c_P|\nabla^2\omega|/|\omega|\le -c_P\nu^{-1}\text{(local Poincar\'e)}.
-\]
-Thus:
-\[
-\frac{d}{dt}\theta_{\max}\le\varepsilon_\pm|\omega|[\Phi_A-2\Phi_\Gamma]
-+\nu\nabla^2\theta < 0
-\]
-for $|\theta_{\max}|$ sufficiently large, since the first term is
-$O(\varepsilon_\pm)=O(e^{-2|\theta_{\max}|})$ while the viscous floor is $O(\nu)>0$.
-\end{proof}
-
-\begin{remark}[Role of viscosity]
-The closure relies essentially on $\nu>0$.
-The viscous term provides an unconditional negative floor at the
-$\theta$-maximum that dominates the exponentially small ($O(e^{-2|\theta|})$)
-stretching residual. This is the NS analogue of the v87 Schwarzian wall
-($\mathcal{V}_S''\ge 7$): a geometric floor that confines the variable
-independently of the dynamics.
+At the $\theta$-maximum (near-Beltrami region, $|\theta|\gg 1$),
+both $|S_{++}-S_{--}|$ and $|S_{+-}|$ are controlled by the strain
+from the dominant helicity projected onto different directions.
+Their ratio $\tan\alpha$ depends on the local geometry of the flow,
+not just on the $\ell=2$ partition, and can exceed~$1$.
 \end{remark}
 
-\subsection{Closure of LC1: Fisher Non-Degeneracy}
+This obstruction rules out a direct pointwise closure.
+The correct route must exploit the \emph{integral structure} of the
+Fisher-weighted enstrophy, where the $\sech^2\theta$ weight
+naturally suppresses the near-Beltrami region where the obstruction lives.
 
-\begin{theorem}[Unconditional $\theta$-bound]\label{thm:theta_uncon}
-Let $\omega_0\in H^s(\T^3)$, $s>5/2$, $\nu>0$, with $r(0)>0$.
-Then on the maximal existence interval $[0,T^*)$:
+\subsection{Fisher Enstrophy Monotonicity (Energy Method)}
+
+\begin{definition}
+The \emph{Fisher enstrophy ratio evolution} is
 \begin{equation}
-\|\theta(\cdot,t)\|_{L^\infty}\le M(\omega_0,\nu)<\infty\quad\forall\,t\in[0,T^*).
+\frac{d}{dt}r(t) = \frac{1}{2\Omega}\frac{d\F_\theta}{dt}
+  - \frac{r}{\Omega}\frac{d\Omega}{dt}.
 \end{equation}
-Consequently, $r(t)\ge r_*=\sech^2 M>0$ for all $t\in[0,T^*)$.
-\end{theorem}
+\end{definition}
 
-\begin{proof}
-By Theorem~\ref{thm:beltrami_dom}(iii), there exists
-$\theta_c=\theta_c(\nu,\|\omega_0\|_{H^s})$ such that
-$\frac{d}{dt}|\theta_{\max}|<0$ whenever $|\theta_{\max}|>\theta_c$.
-By continuity, $|\theta_{\max}(t)|\le\max(\|\theta_0\|_{L^\infty},\theta_c)=:M$
-for all $t\in[0,T^*)$. Setting $r_*=\sech^2 M>0$ gives LC1.
-\end{proof}
+\begin{proposition}[Fisher-weighted CZ bound]\label{prop:fisher_cz}
+For $\omega\in H^s(\T^3)$, $s>5/2$, the cross-helicity stretching
+in the Fisher-weighted norm satisfies
+\begin{equation}\label{eq:fisher_cz}
+\left|\int \Pi_s\,\sech^2\theta\,dx\right|
+\le C_{\mathrm{CZ}}^{(\sech^2\theta)}
+\int |S_{\mathrm{off}}|\,|\omega|^2\,\sech^2\theta\,dx,
+\end{equation}
+where $C_{\mathrm{CZ}}^{(\sech^2\theta)}$ is the CZ operator norm
+in the $\sech^2\theta$-weighted $L^2$ space.
+By Hyt\"onen's sharp $A_2$ theorem~\cite{Hyt12},
+$C_{\mathrm{CZ}}^{(\sech^2\theta)}\le C[\sech^2\theta]_{A_2}$,
+and the $A_2$ constant of the $\sech^2\theta$ weight is bounded:
+\begin{equation}
+[\sech^2\theta]_{A_2}\le C(M)\quad\text{whenever }\|\theta\|_{L^\infty}\le M.
+\end{equation}
+\end{proposition}
 
-\subsection{Closure of LC2: Helical CZ Comparison}
+The Fisher-weighted CZ bound is qualitatively sharper than the
+unweighted bound because $\sech^2\theta$ suppresses contributions from
+near-Beltrami regions ($|\theta|\gg 1$) where $\tan\alpha$ may exceed~1.
+DNS confirms: the $\sech^2\theta$-weighted cancellation ratio is
+$|\gamma_s|/\gamma_a\approx 2.5\%$, versus $\varepsilon_{\mathrm{CZ}}\approx 55\%$
+unweighted (a $22\times$ improvement from the Fisher weight).
 
-\begin{theorem}[CZ comparison from $\ell=2$ structure]\label{thm:LC2}
-Under the hypotheses of Theorem~\ref{thm:theta_uncon},
-with $\|\theta\|_{L^\infty}\le M$:
-there exist $c,C>0$ depending on $M$ and $\nu$ such that for all $(x,t)$,
-\[
-|S_{+-}(x,t)|\ge c\sqrt{r_*}\,|\omega(x,t)|,\qquad
-|S_{++}(x,t)-S_{--}(x,t)|\le C|\omega(x,t)|,
-\]
-with $C<2c\sqrt{r_*}$.
-\end{theorem}
+\subsection{Remaining Analytical Task}
 
-\begin{proof}
-Since $|\theta|\le M$, both helical components satisfy
-$|\omega_\pm|\ge c_M|\omega|$ with $c_M=e^{-M}/\sqrt{e^{2M}+1}>0$.
-The cross-helicity strain $S_{+-}=\hat{\omega}_+^i T_{ij}\hat{\omega}_-^j$,
-where $T_{ij}$ is the Biot--Savart CZ operator, satisfies the standard
-CZ bound $\|T\|_{L^2\to L^2}\le C_{\mathrm{CZ}}$. With both helical
-components bounded below by $c_M|\omega|$, the $\ell=2$ Pythagorean identity
-\eqref{eq:pythag} and the non-degeneracy of the $m=\pm 1$ subspace give
-\[
-|S_{+-}(x)|\ge c_M^2\cdot\frac{2}{5}\cdot|S_{\mathrm{off}}(x)|
-\ge c'|\omega(x)|
-\]
-for a constant $c'>0$ depending on $M$ and the CZ constant.
-The upper bound $|S_{++}-S_{--}|\le C|\omega|$ follows from the standard
-CZ bound. Setting $c=c'/\sqrt{r_*}$ and comparing with the isotropic
-partition ratio ($3:2$ same-to-cross) gives $C<2c\sqrt{r_*}$.
-\end{proof}
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\textbf{Conjecture (Fisher--De Giorgi--Nash--Moser bridge).}
+For the $\theta$-equation~\eqref{eq:theta_evolution} with $\nu>0$
+on $\T^3$: if the Fisher enstrophy ratio satisfies
+$r(t)\ge r_*/2>0$ on $[0,T]$, then the parabolic De Giorgi--Nash--Moser
+theory applied to the $\theta$-equation with $\sech^2\theta$-weighted
+source estimates yields
+$\|\theta(\cdot,t)\|_{L^\infty}\le M(r_*,\nu,\|\omega_0\|_{H^s})$,
+which in turn implies $r(t)\ge\sech^2 M\ge r_*$ via bootstrap,
+closing LC1.
+}}
+\end{center}
+
+The conjecture reduces LC1--LC2 to a \emph{single} problem in weighted
+parabolic regularity theory: promoting the $\sech^2\theta$-weighted
+$L^2$ bound (where the $\ell=2$ CZ cancellation is effective) to an
+$L^\infty$ bound on $\theta$ via De Giorgi--Nash--Moser iteration.
+This is a problem in harmonic analysis and parabolic PDE, decoupled
+from the NS dynamics.
 
 \subsection{Updated Status}
 
@@ -881,97 +788,77 @@ partition ratio ($3:2$ same-to-cross) gives $C<2c\sqrt{r_*}$.
 \toprule
 \textbf{Step} & \textbf{Status} & \textbf{Note} \\
 \midrule
-$r(t)\ge r_*>0$ (LC1) & \textbf{Closed} & Theorem~\ref{thm:theta_uncon}:
-  viscous floor $+$ Beltrami-limit asymptotics \\
-Helical CZ comparison (LC2) & \textbf{Closed} &
-  Theorem~\ref{thm:LC2}: $\ell=2$ Pythagorean $+$ non-degeneracy \\
-Phase regularity (LC3) & Standard & Parabolic Schauder with $|\omega_\pm|\ge c_M|\omega|$ \\
+$\ell=2$ Pythagorean identity & \textbf{Proved} & Lemma~\ref{lem:ell2}:
+  $|S_{++}-S_{--}|^2+4|S_{+-}|^2=|S_{\mathrm{off}}|^2$ \\
+Isotropic energy partition & \textbf{Proved} & Corollary~\ref{cor:iso}:
+  $3:2$ same-to-cross ratio \\
+Pointwise $\tan\alpha<1$ & \textbf{Obstructed} &
+  Remark~\ref{rmk:obstruction}: $\ell=2$ ratio $40\%<50\%$ \\
+Fisher-weighted CZ bound & \textbf{Proved} &
+  Proposition~\ref{prop:fisher_cz}: $\sech^2\theta$-weighted Hyt\"onen \\
+$r(t)\ge r_*$ (LC1) & \textbf{Conditional} &
+  Requires Fisher--DGNM bridge (Conjecture above) \\
+Helical CZ comparison (LC2) & \textbf{Conditional} &
+  Follows from LC1 $+$ $\ell=2$ structure \\
+Phase regularity (LC3) & Standard & Parabolic Schauder \\
 CF93 bridge (LC4) & Standard & Direct from LC3 \\
-$\theta$ bounded $\Rightarrow$ regularity & Classical &
-  Constantin--Fefferman + Beale--Kato--Majda \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\begin{theorem}[Global regularity --- unconditional]\label{thm:main_uncon}
-Let $\omega_0\in H^s(\T^3)$, $s>5/2$, $\nu>0$, with $r(0)>0$
-(non-Beltrami initial data). Then the unique classical solution to the
-3D Navier--Stokes equations~\eqref{eq:NS} is globally smooth:
-\begin{equation}
-\boxed{\sup_{t\ge 0}\|\omega(\cdot,t)\|_{H^s}<\infty.}
-\end{equation}
-\end{theorem}
-
-\begin{proof}
-Theorem~\ref{thm:theta_uncon} closes LC1.
-Theorem~\ref{thm:LC2} closes LC2.
-LC3 follows from parabolic Schauder theory (cf.~Section~\ref{sec:proof}, Step~3).
-LC4 follows from LC3 (cf.~Step~4).
-The chain Steps~1--6 of Theorem~\ref{thm:main} now holds unconditionally.
-\end{proof}
-
-\begin{remark}[The three structural ingredients]
-The proof rests on three ingredients, none of which existed in the pre-v87
-conditional version:
-\begin{enumerate}
-\item \textbf{$\ell=2$ Pythagorean constraint} (Lemma~\ref{lem:ell2}):
-  the CZ kernel geometry partitions strain into same- vs.\ cross-helicity
-  in a fixed ratio.
-\item \textbf{Beltrami-limit cancellation} (Theorem~\ref{thm:beltrami_dom}):
-  at large $|\theta|$, both drive and restoration are $O(\varepsilon_\pm)$,
-  and their ratio is controlled by the $\ell=2$ structure.
-\item \textbf{Viscous floor} ($\nu>0$):
-  at the $\theta$-maximum, the viscous Laplacian provides a strictly negative
-  contribution that dominates the exponentially small stretching residual.
-  This is the NS analogue of the v87 Schwarzian wall.
-\end{enumerate}
-DNS at $Re$ up to $10{,}000$ confirms all three:
-$\alpha_{\mathrm{rms}}\approx 35^\circ$ (within the $\ell=2$ isotropic bound
-of $50.8^\circ$), $\varepsilon\sim Re^{-0.6}$ (Beltrami-limit cancellation
-strengthens with $Re$), and $r\approx 0.54$ (Fisher non-degeneracy holds
-uniformly).
+\begin{remark}[Comparison with the pre-v87 status]
+Before the $\ell=2$ analysis, the proof had four independent
+analytical gaps (LC1--LC4 in Section~\ref{sec:discussion}).
+The v87-inspired structural analysis reduces these to a
+\emph{single} gap: the Fisher--DGNM bridge.
+The gap is now a precisely identified problem in weighted parabolic
+regularity, decoupled from the NS-specific difficulties.
+DNS at $Re$ up to $10{,}000$ provides strong quantitative evidence
+($\alpha_{\mathrm{rms}}\approx 35^\circ$, $r\approx 0.54$,
+$\varepsilon\sim Re^{-0.6}$) that the conjecture holds.
 \end{remark}
 
 % =====================================================================
 \section{Conclusion}
 % =====================================================================
 
-We have presented a proof of global regularity for 3D Navier--Stokes
-equations on $\T^3$ based on the LoNalogy/BC-CGL framework (v87).
-The proof closes the four load-bearing analytical conditions (LC1--LC4)
-that were left open in the earlier conditional version.
+We have presented a proof programme for global regularity of 3D
+Navier--Stokes equations on $\T^3$ based on the LoNalogy/BC-CGL
+framework, incorporating structural analysis from v87~\cite{v87}.
 
-The key innovation is recognizing the NS equations as a
-\textbf{closed passive BC system with no invisible sector},
-and applying the v87 circularity-free closure technique:
-the viscous floor and $\ell=2$ CZ kernel geometry provide a structural
-bound on the information ratio $\theta$ that does not depend on
-the regularity of the solution itself.
+The $\ell=2$ Pythagorean identity (Lemma~\ref{lem:ell2}) establishes
+a rigid geometric constraint on the Biot--Savart strain under helical
+decomposition: same-helicity and cross-helicity components partition
+the off-diagonal strain energy in a fixed $3:2$ ratio.
+This identity, combined with Hyt\"onen's sharp $A_2$ theorem, yields
+a Fisher-weighted CZ bound (Proposition~\ref{prop:fisher_cz}) that
+is qualitatively sharper than the unweighted bound.
 
-The proof rests on three pillars:
-\begin{enumerate}
-\item \textbf{$\ell=2$ Pythagorean constraint}: the Biot--Savart CZ kernel
-  partitions strain energy into same- and cross-helicity components in a
-  fixed geometric ratio (3:2), bounding the strain angle.
-\item \textbf{Near-Beltrami self-consistency}: at large $|\theta|$,
-  drive and restoration are both $O(e^{-2|\theta|})$, and their ratio is
-  controlled by the $\ell=2$ structure.
-\item \textbf{Viscous floor}: the viscous Laplacian at the $\theta$-maximum
-  provides an unconditional negative contribution $O(\nu)$ that dominates
-  the exponentially small stretching residual for $|\theta|$ large enough.
-\end{enumerate}
+However, the $\ell=2$ partition ratio ($40\%$ cross-helicity) falls
+short of the $50\%$ threshold required for the pointwise maximum
+principle to close (Remark~\ref{rmk:obstruction}).
+The closure therefore requires promoting the Fisher-weighted $L^2$
+bound to an $L^\infty$ bound on $\theta$ via a parabolic
+De Giorgi--Nash--Moser bootstrap---a single, precisely identified
+problem in weighted parabolic regularity theory.
 
-DNS verification at $Re$ up to $10{,}000$ is quantitatively consistent:
-enstrophy budget closure to $0.2\%$, $\alpha_{\mathrm{rms}}\approx 35^\circ$,
-and $\varepsilon\sim Re^{-0.6}\to 0$ as $Re\to\infty$.
+The structural contribution of this paper is the reduction:
+\emph{four independent analytical gaps (LC1--LC4) have been reduced to
+one (the Fisher--DGNM bridge)}, and that one is a problem in harmonic
+analysis, decoupled from NS-specific difficulties.
 
-The structural role of Fisher information $\sech^2\theta$ in this proof is
-analogous to Perelman's $\mathcal{W}$-functional for the Ricci flow:
-a monotone quantity that controls the geometry of potential singularities.
-Perelman showed entropy prevents local collapsing; we show the Fisher metric
-prevents vorticity-direction degeneracy.
-Both rely on a geometric floor (Perelman's $\kappa$-noncollapsing;
-our viscous $+$ $\ell=2$ floor) that is independent of the specific solution.
+DNS verification at $Re$ up to $10{,}000$ provides strong quantitative
+support: enstrophy budget closure to $0.2\%$,
+$\alpha_{\mathrm{rms}}\approx 35^\circ < 45^\circ$ (the pointwise
+threshold), $r\approx 0.54$ (Fisher non-degeneracy),
+and $\varepsilon\sim Re^{-0.6}\to 0$.
+
+The structural role of Fisher information $\sech^2\theta$ is analogous
+to Perelman's $\mathcal{W}$-functional for Ricci flow:
+a geometric weight that controls potential singularities by suppressing
+the degenerate region. The remaining analytical task---promoting the
+weighted bound to pointwise control---parallels Perelman's passage from
+entropy monotonicity to $\kappa$-noncollapsing.
 
 \bigskip
 \noindent\textbf{Acknowledgments.} The DNS computations were performed on an NVIDIA GB10 system using JAX.
