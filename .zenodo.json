@@ -1,0 +1,32 @@
+{
+  "title": "BC-CGL Navier-Stokes Regularity Programme: Source code and DNS results",
+  "description": "Source code and direct numerical simulation (DNS) results for the paper 'Toward Global Regularity of 3D Navier-Stokes Equations via Bicomplex Calderon-Zygmund-Ginzburg-Landau Theory'. Includes: (1) JAX-based pseudo-spectral NS solver with helical decomposition diagnostics, (2) Taylor-Green vortex DNS at Re=2000-10000, N=128-256, (3) enstrophy budget closure verification (0.2% median residual), (4) evidence for CZ cancellation phenomenon (epsilon ~ Re^{-0.6}).",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Nakamura, Masayoshi",
+      "affiliation": "Independent researcher"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Navier-Stokes",
+    "regularity",
+    "bicomplex",
+    "Calderon-Zygmund",
+    "Ginzburg-Landau",
+    "helical decomposition",
+    "DNS",
+    "JAX",
+    "LoNalogy"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Lorhlona/bc-cgl-navier-stokes",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ],
+  "language": "eng"
+}
